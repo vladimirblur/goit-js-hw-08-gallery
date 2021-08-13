@@ -160,19 +160,6 @@ function onEscKeyDown({ code }) {
     }
 }
 
-// function onLeftArrowPress({ code }) {
-//     const previousImgRef = galleryRef
-//         .querySelector(`[data-source="${lightboxImgRef.src}"]`)
-//         .closest('.gallery__item')
-//         .previousElementSibling.querySelector('.gallery__image');
-
-//   if (code === 'ArrowLeft' && previousImgRef) {
-//       console
-//         switchGalleryImg();
-//         replaceFullImageSrcValue(previousImgRef.dataset.source, previousImgRef.alt);
-//     }
-// }
-
 function onEscKeyPress({ code }) {
     if (code === 'Escape') {
         toggleClassOnLightbox();
