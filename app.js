@@ -140,15 +140,6 @@ function clearImageAttributeValue() {
   lightboxImgRef.src = "";
 }
 
-function handleEscKeyDown({ code }) {
-    if (code === 'Escape') {
-        modalToggleClassOnLightbox();
-        setTimeout(clearImageAttributeValue, 250);
-
-        removeEventListenerOnEscKeyDown();
-    }
-}
-
 
 
 function onEscKeyDown({ code }) {
@@ -156,19 +147,15 @@ function onEscKeyDown({ code }) {
         modalToggleClassOnLightbox();
         setTimeout(clearImageAttributeValue, 250);
 
-        removeEventListenerOnEscKeyDown();
+      removeEventListenerOnEscKeyDown();
+      removeEventListenersOnArrowsPress();
     }
 }
 
-function onEscKeyPress({ code }) {
-    if (code === 'Escape') {
-        toggleClassOnLightbox();
-        setTimeout(clearAttributeValueUrl, 250);
-
-        removeEventListenerOnEscKeyPress();
-        removeEventListenersOnArrowsPress();
-    }
+function removeEventListenerOnEscKeyDown() {
+    window.removeEventListener('keydown', onEscKeyDown);
 }
+
 
 function removeEventListenersOnArrowsPress() {
     window.removeEventListener('keydown', onRightArrowPress);
