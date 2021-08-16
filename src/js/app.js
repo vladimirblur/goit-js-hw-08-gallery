@@ -1,5 +1,5 @@
 
-const galleryItems = [
+export const galleryItems = [
   {
     preview:
       'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
@@ -80,8 +80,8 @@ const setGallery = galleryItems
   .join("");
   
 
-
 galleryRef.insertAdjacentHTML("afterbegin", setGallery);
+
 
 const handleFullImageOpenClick = (e) => {
   const { target } = e;
@@ -144,7 +144,21 @@ function removeEventListenerOnEscKeyDown() {
     window.removeEventListener('keydown', onEscKeyDown);
 }
 
-import switchGalleryImg from './flipping-images';
+function switchGalleryImg() {
+  if (lightboxImgRef.classList.contains('show')) {
+    lightboxImgRef.classList.replace('show', 'hide');
+  } else {
+    lightboxImgRef.classList.add('show');
+  }
+   lightboxImgRef.addEventListener('load', onImgLoad);
+}
+
+function onImgLoad() {
+    lightboxImgRef.style.cssText =
+        'transition: opacity var(--animation-duration) var(--timing-function)';
+    lightboxImgRef.classList.replace('hide', 'show');
+};
+
 
 function onLeftArrowPress({ code }) {
     const previousImgRef = galleryRef

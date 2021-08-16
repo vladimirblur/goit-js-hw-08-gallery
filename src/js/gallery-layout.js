@@ -1,5 +1,4 @@
-
-export default function setGalleryLayout  (images)  {
+export default function setGalleryLayout(images) {
   const { preview, original, description } = images
   return `<li class="gallery__item">
   <a
@@ -15,3 +14,4 @@ export default function setGalleryLayout  (images)  {
   </a>
 </li>`
 };
+
