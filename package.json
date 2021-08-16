@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /goit-js-hw-08-gallery/"
+    "build": "parcel build src/*.html --public-url /goit-js-hw-08-gallery/",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
