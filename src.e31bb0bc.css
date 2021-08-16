@@ -136,7 +136,7 @@ body {
   cursor: pointer;
   transition: background-color var(--animation-duration) var(--timing-function);
   outline: none;
-  background-image: url('../images/icon-close.svg');
+  background-image: url('/icon-close.1add023a.svg');
   background-position: center;
   background-size: 60%;
   background-repeat: no-repeat;
@@ -146,3 +146,6 @@ body {
 .lightbox__button:focus {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+/*# sourceMappingURL=/src.e31bb0bc.css.map */
