@@ -1,3 +1,4 @@
+
 const galleryItems = [
   {
     preview:
@@ -67,23 +68,12 @@ const galleryItems = [
 const galleryRef = document.querySelector(".js-gallery")
 const lightboxImgRef = document.querySelector(".lightbox__image")
 const lightboxRef = document.querySelector(".js-lightbox")
+const buttonModalClose = document.querySelector("button[data-action=close-lightbox]")
+const lightboxOverlayRef = document.querySelector(".lightbox__overlay")
 
-const setGalleryLayout = images => {
-  const { preview, original, description } = images
-  return `<li class="gallery__item">
-  <a
-    class="gallery__link"
-    href="${original}"
-  >
-    <img
-      class="gallery__image"
-      src="${preview}"
-      data-source="${original}"
-      alt="${description}"
-    />
-  </a>
-</li>`
-}
+
+
+import setGalleryLayout from './gallery-layout';
 
 const setGallery = galleryItems
   .map(setGalleryLayout)
@@ -110,8 +100,6 @@ const handleFullImageOpenClick = (e) => {
 }
 
 
-const buttonModalClose = document.querySelector("button[data-action=close-lightbox]")
-const lightboxOverlayRef = document.querySelector(".lightbox__overlay")
 
 
 function modalToggleClassOnLightbox() {
@@ -156,11 +144,7 @@ function removeEventListenerOnEscKeyDown() {
     window.removeEventListener('keydown', onEscKeyDown);
 }
 
-
-function removeEventListenersOnArrowsPress() {
-    window.removeEventListener('keydown', onRightArrowPress);
-    window.removeEventListener('keydown', onLeftArrowPress);
-}
+import switchGalleryImg from './flipping-images';
 
 function onLeftArrowPress({ code }) {
     const previousImgRef = galleryRef
@@ -172,7 +156,7 @@ function onLeftArrowPress({ code }) {
         switchGalleryImg();
         replaceFullImageSrcValue(previousImgRef.dataset.source, previousImgRef.alt);
     }
-}
+};
 
 function onRightArrowPress({ code }) {
     const nextImgRef = galleryRef
@@ -184,24 +168,17 @@ function onRightArrowPress({ code }) {
       switchGalleryImg();
         replaceFullImageSrcValue(nextImgRef.dataset.source, nextImgRef.alt);
     }
+};
+
+function removeEventListenersOnArrowsPress() {
+    window.removeEventListener('keydown', onRightArrowPress);
+    window.removeEventListener('keydown', onLeftArrowPress);
 }
+
 
 function switchesImgWithArrows() {
     window.addEventListener('keydown', onLeftArrowPress);
     window.addEventListener('keydown', onRightArrowPress);
 }
 
-function onImgLoad() {
-    lightboxImgRef.style.cssText =
-        'transition: opacity var(--animation-duration) var(--timing-function)';
-    lightboxImgRef.classList.replace('hide', 'show');
-}
 
-function switchGalleryImg() {
-  if (lightboxImgRef.classList.contains('show')) {
-    lightboxImgRef.classList.replace('show', 'hide');
-  } else {
-    lightboxImgRef.classList.add('show');
-  }
-   lightboxImgRef.addEventListener('load', onImgLoad);
-}
